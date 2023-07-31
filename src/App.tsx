@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Row, Col, Form, Input, Button, Typography } from "antd";
 
-function App() {
-  const [count, setCount] = useState(0)
+const { TextArea } = Input;
+const { Title } = Typography;
 
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Form name="recommendation-form" layout="vertical">
+      <Row align="middle" justify="space-around">
+        <Col span={18}>
+          <div>
+            <Row>
+              <Col span={8}>
+                <Form.Item label={<Title level={4}>Movie title</Title>}>
+                  <Input placeholder="Movie title..." />
+                </Form.Item>
+              </Col>
+            </Row>
+            <Row>
+              <Col span={12}>
+                <Form.Item label={<Title level={3}>Description</Title>}>
+                  <TextArea
+                    showCount
+                    maxLength={500}
+                    placeholder="Write a short description"
+                    style={{ height: 200 }}
+                  />
+                </Form.Item>
+              </Col>
+            </Row>
+            <Button style={{ marginTop: 18 }}>Send recommendation</Button>
+          </div>
+        </Col>
+      </Row>
+    </Form>
+  );
+};
 
-export default App
+export default App;
