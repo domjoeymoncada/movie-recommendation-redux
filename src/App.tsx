@@ -1,24 +1,38 @@
 import { Row, Col, Form, Input, Button, Typography } from "antd";
+import { useDispatch } from "react-redux";
+import { addMovieRecommendation } from "./redux/features/movieListSlice";
 
 const { TextArea } = Input;
 const { Title } = Typography;
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  const onFormSubmit = (values) => {
+    dispatch(addMovieRecommendation(values));
+  };
+
   return (
-    <Form name="recommendation-form" layout="vertical">
+    <Form name="recommendation-form" layout="vertical" onFinish={onFormSubmit}>
       <Row align="middle" justify="space-around">
         <Col span={18}>
           <div>
             <Row>
               <Col span={8}>
-                <Form.Item label={<Title level={4}>Movie title</Title>}>
+                <Form.Item
+                  name="title"
+                  label={<Title level={4}>Movie title</Title>}
+                >
                   <Input placeholder="Movie title..." />
                 </Form.Item>
               </Col>
             </Row>
             <Row>
               <Col span={12}>
-                <Form.Item label={<Title level={3}>Description</Title>}>
+                <Form.Item
+                  name="description"
+                  label={<Title level={3}>Description</Title>}
+                >
                   <TextArea
                     showCount
                     maxLength={500}
@@ -28,7 +42,9 @@ const App = () => {
                 </Form.Item>
               </Col>
             </Row>
-            <Button style={{ marginTop: 18 }}>Send recommendation</Button>
+            <Button htmlType="submit" style={{ marginTop: 18 }}>
+              Send recommendation
+            </Button>
           </div>
         </Col>
       </Row>
