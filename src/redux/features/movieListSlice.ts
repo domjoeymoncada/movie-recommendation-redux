@@ -11,8 +11,11 @@ export const movieListSlice = createSlice({
     addMovieRecommendation: (state, action) => {
       state.recommendations.push(action.payload);
     },
+    removeAllMovieRecommendations: (state) => {
+      state.recommendations = [];
+    },
   },
 });
 
-export const { addMovieRecommendation } = movieListSlice.actions;
+export const { addMovieRecommendation, removeAllMovieRecommendations } = movieListSlice.actions;
 export default movieListSlice.reducer;
