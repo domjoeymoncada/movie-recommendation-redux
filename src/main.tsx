@@ -15,11 +15,11 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
               <h1>Welcome to home screen</h1>
             </div>
           }
-        ></Route>
+        />
         <Route
           path="/send-movie-recommendation-form"
           element={<MovieRecommendationForm />}
-        ></Route>
+        />
       </Routes>
     </BrowserRouter>
   </Provider>
