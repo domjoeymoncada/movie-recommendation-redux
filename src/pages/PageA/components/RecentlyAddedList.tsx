@@ -1,4 +1,4 @@
-import { Typography } from "antd";
+import { Typography, Row, Col } from "antd";
 
 const { Title, Text } = Typography;
 
@@ -7,12 +7,17 @@ type RecentlyAddedListProps = {
 };
 
 const RecentlyAddedList = ({ movieList }: RecentlyAddedListProps) => {
-  console.log("mobilist", movieList);
   return (
     <div>
       <Title level={3}>Recently added:</Title>
-      {movieList?.length > 0 &&
-        movieList?.map((movie, index) => <Text key={index} strong>{movie.title}</Text>)}
+      {movieList.length > 0 &&
+        movieList?.slice(0,3).map((movie, index) => (
+          <Row key={index}>
+            <Col>
+              <Text strong>{movie.title}</Text>
+            </Col>
+          </Row>
+        ))}
     </div>
   );
 };
