@@ -29,3 +29,4 @@ The main purpose of this app is to demonstrate my learnings of Redux Toolkit (RT
 - Vite
 - Redux Toolkit (RTK)
 - React Router
+- Ant Design
